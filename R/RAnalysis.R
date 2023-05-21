@@ -13,13 +13,15 @@ print(back2wide)
 #separate by "/"
 table3
 table3 %>%
-  separate(rate, into = c("cases", "population"))
+  separate(rate, sep = "/",into = c("cases", "population"))
 
 table3 %>%
   separate(rate, sep = "/",into = c("cases", "population"), remove = FALSE)
  
 table5
 
+table5 %>%
+  unite(new, century, year, sep = "")
 
 #fill na with before data
 score = tribble(
@@ -28,6 +30,7 @@ score = tribble(
   NA,       2,         10,
   NA,       NA,        9,
   "David",  1,         4)
+
 score
 
 score %>%
