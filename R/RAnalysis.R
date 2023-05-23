@@ -66,7 +66,7 @@ by_day = flights %>% group_by(year, month, day)
 
 by_day
 
-by_day %>%  summarise(delay = mean(dep_delay, na.rm = TRUE))
+by_day %>%  summarize(delay = mean(dep_delay, na.rm = TRUE))
 
 flights %>% group_by(dest) %>%  summarize(
   count = n(),

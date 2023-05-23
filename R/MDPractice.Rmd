@@ -1,0 +1,99 @@
+---
+title: "MarkdownPractice" 
+date: "2023-05-23"
+author : "Tiabet"
+output:
+  html_document: 
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+$y=ax+b$ $$y=ax+b$$ $$ y = a1x1 + a2x2 + \dots + b$$
+
+$\theta$
+
+$\begin{equation} \begin{split} \hat \beta_{OLS} & = (X'X)^{-1}X'Y \\ &= (X'X)^{-1}X'(X\beta+\epsilon) \\ &= (X'X)^{-1}X'X\beta + (X'X)^{-1}X'\epsilon \\ &= \beta + (X'X)^{-1}X'\epsilon \end{split} \end{equation}$
+
+::: {style="background-color:#F7F7F7;padding: 5px"}
+이 부분의 배경은 회색으로 표현됩니다.
+:::
+
+::: {style="background-color:#F7F7F7;padding: 5px"}
+이 부분의 배경은 회색으로 표현됩니다.
+:::
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+mtcars[1:5, ] %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+```{r}
+library(DT)
+
+mtcars %>%
+  datatable(escape = FALSE,
+            rownames= FALSE,
+            extensions = 'Buttons',
+            options = list(pageLength = 10,
+                           dom = 'Bfrtip',
+                           buttons = c('copy', 'csv', 'excel', 'pdf')
+                           ))
+```
+
+```{r, echo = FALSE, error=FALSE}
+
+library(ggplot2)
+library(magrittr)
+
+diamonds %>%
+  ggplot(aes(x = carat, y = price)) +
+  geom_point()
+```
+```{r, warning=FALSE,echo=FALSE}
+library(ggplot2)
+library(magrittr)
+library(plotly)
+
+(diamonds %>%
+  ggplot(aes(x = carat, y = price)) +
+  geom_point()
+  ) %>%
+  ggplotly()
+```
+
