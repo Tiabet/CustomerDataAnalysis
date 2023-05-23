@@ -76,24 +76,4 @@ mtcars %>%
                            ))
 ```
 
-```{r, echo = FALSE, error=FALSE}
-
-library(ggplot2)
-library(magrittr)
-
-diamonds %>%
-  ggplot(aes(x = carat, y = price)) +
-  geom_point()
-```
-```{r, warning=FALSE,echo=FALSE}
-library(ggplot2)
-library(magrittr)
-library(plotly)
-
-(diamonds %>%
-  ggplot(aes(x = carat, y = price)) +
-  geom_point()
-  ) %>%
-  ggplotly()
-```
-
+![](images/image-472981544.png)
