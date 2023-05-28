@@ -1,0 +1,61 @@
+---
+title: "MarkdownPractice" 
+date: "2023-05-23"
+author : "Tiabet"
+output:
+  html_document: 
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Practice for RMarkdown
+
+$y=ax+b$ $$y=ax+b$$ $$ y = a1x1 + a2x2 + \dots + b$$
+
+$\theta$
+
+$\begin{equation} \begin{split} \hat \beta_{OLS} & = (X'X)^{-1}X'Y \\ &= (X'X)^{-1}X'(X\beta+\epsilon) \\ &= (X'X)^{-1}X'X\beta + (X'X)^{-1}X'\epsilon \\ &= \beta + (X'X)^{-1}X'\epsilon \end{split} \end{equation}$
+
+::: {style="background-color:#F7F7F7;padding: 5px"}
+이 부분의 배경은 회색으로 표현됩니다.
+:::
+
+::: {style="background-color:#F7F7F7;padding: 5px"}
+이 부분의 배경은 회색으로 표현됩니다.
+:::
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+mtcars[1:5, ] %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+```{r}
+library(DT)
+
+mtcars %>%
+  datatable(escape = FALSE,
+            rownames= FALSE,
+            extensions = 'Buttons',
+            options = list(pageLength = 10,
+                           dom = 'Bfrtip',
+                           buttons = c('copy', 'csv', 'excel', 'pdf')
+                           ))
+```
+
+![](images/image-472981544.png)
