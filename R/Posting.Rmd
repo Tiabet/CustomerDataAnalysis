@@ -11,24 +11,51 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
-## R Markdown
+```{=html}
+<style>
+    .my-header {
+        color: blue;
+        font-size: 24px;
+    }
+    
+    .my-paragraph {
+        color: red;
+        font-size: 16px;
+    }
+</style>
+```
+# My HTML and CSS Example
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+::: my-header
+This is a header with custom CSS styling.
+:::
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+::: my-paragraph
+This paragraph has custom CSS styling as well.
+:::
 
-```{r cars}
-summary(cars)
+```{r table, echo=FALSE, warning= FALSE}
+library(knitr)
+library(kableExtra)
+
+mtcars[1:5, ] %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-## Including Plots
+```{r graph, echo=FALSE, warning= FALSE, message=FALSE}
+library(ggplot2)
+library(magrittr)
+library(plotly)
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+(diamonds %>%
+  ggplot(aes(x = carat, y = price)) +
+  geom_point()
+  ) %>%
+  ggplotly()
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+![](https://blog.kakaocdn.net/dn/beluDa/btshMVHzEWM/Lb4OQFseKkki40qej2C0dk/img.png)
