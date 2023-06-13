@@ -9,7 +9,7 @@ ui = fluidPage(
 )
 
 server = function(input, output, session) {
-  data = reactive(diamonds %>% filter(input$var > input$min))
+  data <- reactive(diamonds %>% filter(.data[[input$var]] > .env$input$min))
   output$output = renderTable(head(data()))
 }
 
