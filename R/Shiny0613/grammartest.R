@@ -14,3 +14,9 @@ diamonds %>% filter(.data$carat > .env$min)
 
 var = 'carat'
 diamonds %>% filter(.data[[var]] > .env$min)
+
+library(ggplot2)
+
+iris %>%
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
