@@ -10,19 +10,19 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      checkboxGroupInput("species", "펭귄 종류", 
+      checkboxGroupInput("species", "펭귄 종류를 선택하세요", 
                          choices = unique(penguins$species), 
-                         selected = unique(penguins$species)),
+                         selected = "Adelie"),
       
-      selectInput("x_axis", "그림의 x축", 
+      selectInput("x_axis", "x축을 선택하세요", 
                   choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
                   selected = "bill_length_mm"),
       
-      selectInput("y_axis", "그림의 y축", 
+      selectInput("y_axis", "y축을 선택하세요", 
                   choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"),
                   selected = "bill_depth_mm"),
       
-      sliderInput("point_size", "그림의 점 크기", 
+      sliderInput("point_size", "점 크기를 선택하세요", 
                   min = 1, max = 10, value = 5)
     ),
     
@@ -50,9 +50,8 @@ server <- function(input, output) {
     filtered_data()%>%
     ggplot(aes_string(x = input$x_axis, y = input$y_axis, color = "species", shape = "sex")) +
       geom_point(size = input$point_size) +
-      labs(x = input$x_axis, y = input$y_axis, color = "펭귄 종류", shape = "성별")
+      labs(x = input$x_axis, y = input$y_axis, color = "species", shape = "sex")
   })
 }
 
 shinyApp(ui, server)
-
